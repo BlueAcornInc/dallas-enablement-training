@@ -1,0 +1,27 @@
+{
+	"name": "PHP",
+
+	"image": "mcr.microsoft.com/devcontainers/php:1-8.1-bullseye",
+
+	"forwardPorts": [8080],
+
+	"postCreateCommand": "make install",
+
+	"containerEnv": {
+		"XDEBUG_MODE": "off"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"nodeGypDependencies": true,
+			"version": "14",
+			"nvmVersion": "latest"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"Postman.postman-for-vscode"
+			]
+		}
+	}
+}
