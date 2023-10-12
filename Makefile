@@ -14,3 +14,6 @@ install-aio-apimesh: ## installs the api mesh extension
 	aio plugins:install @adobe/aio-cli-plugin-api-mesh
 
 install: install-magento-cloud install-aio install-aio-apimesh ## installs dependancies
+
+run: ## runs a development server
+	aio app run
