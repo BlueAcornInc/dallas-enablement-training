@@ -24,7 +24,7 @@ config.html?lang=en
 sdk/installation/
 
 ## Install Catalog Service
-- [ ] Configure Catalog Service: Installation and configuration docs
+- [ ] Configure Catalog Service: Installation and configuration docs https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/installation.html?lang=en
 
 ## Webhook Framework
 
