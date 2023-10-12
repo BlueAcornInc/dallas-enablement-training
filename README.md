@@ -18,17 +18,16 @@ https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.
 - [x] Configure Adobe I/O Connection within App Builder https://developer.adobe.com/commerce/extensibility/events/configure-commerce/
 
 ## Install AdminUI SDK
-- [ ] Install IMS Modules (required by Admin UI SDK): https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-
-config.html?lang=en
-- [ ] Install Admin UI SDK: https://developer.adobe.com/commerce/extensibility/admin-ui-
-sdk/installation/
+- [x] Install IMS Modules (required by Admin UI SDK): https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en
+- [x] Install Admin UI SDK: https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/installation/
+- [ ] Configure IMS Modules (Rick is waiting to do this)
 
 ## Install Catalog Service
-- [ ] Configure Catalog Service: Installation and configuration docs https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/installation.html?lang=en
+- [x] Configure Catalog Service: Installation and configuration docs https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/installation.html?lang=en
 
 ## Webhook Framework
 
-* [ ] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
+* Needs to be pushed [x] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
 
 
 ## User pre-requisites
