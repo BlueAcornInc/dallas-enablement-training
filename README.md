@@ -27,7 +27,6 @@ sdk/installation/
 - [ ] Configure Catalog Service: Installation and configuration docs
 
 ## Webhook Framework
-___Documentation not published yet. This is GA 10/10. Adobe team will follow up with this step as soon as we have documentation ready.___
 
 * [ ] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
 
