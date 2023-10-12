@@ -9,12 +9,12 @@ https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.
 
 ## Provision Adobe App Builder
 
-- [ ] Create an App Builder project https://developer.adobe.com/commerce/extensibility/events/project-setup/
+- [x] Create an App Builder project https://developer.adobe.com/commerce/extensibility/events/project-setup/
         * [App Builder Space](https://developer.adobe.com/console/projects/51911/4566206088345069907/)
             * [Production](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079600/details)
             * [Stage](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079601/details)
 
-- [ ] Install Adobe I/O Events for Adobe Commerce (Skip step 1 as you will be on 2.4.6): https://developer.adobe.com/commerce/extensibility/events/installation/
+- [x] Install Adobe I/O Events for Adobe Commerce (Skip step 1 as you will be on 2.4.6): https://developer.adobe.com/commerce/extensibility/events/installation/
 - [ ] Configure Adobe I/O Connection within App Builder https://developer.adobe.com/commerce/extensibility/events/configure-commerce/
 
 ## Install AdminUI SDK
@@ -27,7 +27,10 @@ sdk/installation/
 - [ ] Configure Catalog Service: Installation and configuration docs
 
 ## Webhook Framework
-Documentation not published yet. This is GA 10/10. Adobe team will follow up with this step as soon as we have documentation ready.
+___Documentation not published yet. This is GA 10/10. Adobe team will follow up with this step as soon as we have documentation ready.___
+
+* [ ] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
+
 
 ## User pre-requisites
 
