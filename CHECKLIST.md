@@ -1,6 +1,18 @@
-# Set-up tasks for Infosys November 2 2023 Dallas, TX
+# Dallas Enablement Training
 
-Infosys to complete these tasks by Oct 11, 2023
+Set-up tasks for Infosys November 2 2023 Dallas, TX
+
+## References
+
+- App Builder
+    - [Dalls Enablement Training in App Builder](https://developer.adobe.com/console/projects/51911/4566206088345069907/)
+        - [Production Workspace](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079600/details)
+        - [Stage Workspace](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079601/details)
+- Adobe Commerce Cloud
+    - [Adobe Commerce Cloud Project](https://console.magento.cloud/arjun-n01/t3cui2xfd7pvq/master)
+        - [Master (Frontend)](http://master-7rqtwti-t3cui2xfd7pvq.ap-4.magentosite.cloud)
+        - [Master (Admin)](https://master-7rqtwti-t3cui2xfd7pvq.ap-4.magentosite.cloud/admin) Requires Adobe IMS Accsss to Infosys
+
 
 ## Provision Adobe Commerce Cloud v2.4.6
 
@@ -10,10 +22,8 @@ https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.
 ## Provision Adobe App Builder
 
 - [x] Create an App Builder project https://developer.adobe.com/commerce/extensibility/events/project-setup/
-    - [App Builder Space](https://developer.adobe.com/console/projects/51911/4566206088345069907/)
-      - [Production](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079600/details)
-      - [Stage](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079601/details)
-    - For this workshop, we are using the **Stage** workspace because it does not require submission approval
+    
+    Note: _For this workshop, we are using the **Stage** workspace because it does not require submission approval_
 
 - [x] Install Adobe I/O Events for Adobe Commerce (Skip step 1 as you will be on 2.4.6): https://developer.adobe.com/commerce/extensibility/events/installation/
 - [x] Configure Adobe I/O Connection within App Builder https://developer.adobe.com/commerce/extensibility/events/configure-commerce/
@@ -29,7 +39,7 @@ https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.
 ## Webhook Framework
 
 - [x] Install Webhooks module
-- [ ] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
+- [x] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
 
 
 ## User pre-requisites
@@ -44,24 +54,24 @@ with the hands-on labs:
 - [x] API Client e.g. Postman https://www.postman.com/product/api-client/
 
 
-# Access Setup
+## Access Setup
 
 We also committed to setting up this level of access
 
-## App Builder
+### App Builder
 
 * [ ] Adobe needs one user who has access to App Builder Org
     * Administrative Access to run creation scripts
     * Developer Access if something else
 
 
-## Adobe Commerce Admin Access
+### Adobe Commerce Admin Access
 
 Adobe may need troubleshooting access to Adobe Commerce, but they hope they don't need this.
 
-*  [ ] Provison access to an adobe resource (Adobe to confirm who this will be)
+* [ ] Provison access to an adobe resource (Adobe to confirm who this will be)
 
 
-# Installation Notes and Issues
+## Installation Notes and Issues
 
 * [Step 4](https://developer.adobe.com/commerce/extensibility/events/project-setup/) asks to `Select the DX Experience Cloud SPA v1 option` but this isn't available. I selected `@adobe/generator-app-excshell` as it was the only one based on `dx/excshell/1` which seems like a requirement for the runtime demo
