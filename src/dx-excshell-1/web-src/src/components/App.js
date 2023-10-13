@@ -1,15 +1,24 @@
-/* 
-* <license header>
-*/
-
+/*
+ * Copyright 2023 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: All information contained herein is, and remains
+ * the property of Adobe and its suppliers, if any. The intellectual
+ * and technical concepts contained herein are proprietary to Adobe
+ * and its suppliers and are protected by all applicable intellectual
+ * property laws, including trade secret and copyright laws.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Adobe.
+ */
 import React from 'react'
-import { Provider, defaultTheme, Grid, View } from '@adobe/react-spectrum'
-import ErrorBoundary from 'react-error-boundary'
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
-import SideBar from './SideBar'
-import ActionsForm from './ActionsForm'
-import { Home } from './Home'
-import { About } from './About'
+import { Provider, lightTheme } from '@adobe/react-spectrum'
+import { ErrorBoundary } from 'react-error-boundary'
+import { Route, BrowserRouter, Routes } from 'react-router-dom'
+import { MainPage } from './MainPage'
+import ExtensionRegistration from './ExtensionRegistration'
+import { FirstMassAction } from './massActions/FirstMassAction'
+import { AnotherMassAction } from './massActions/AnotherMassAction'
 
 function App (props) {
   console.log('runtime object:', props.runtime)
@@ -17,8 +26,8 @@ function App (props) {
 
   // use exc runtime event handlers
   // respond to configuration change events (e.g. user switches org)
-  props.runtime.on('configuration', ({ imsOrg, imsToken, locale }) => {
-    console.log('configuration change', { imsOrg, imsToken, locale })
+  props.runtime.on('configuration', ({ imsOrg, imsToken }) => {
+    console.log('configuration change', { imsOrg, imsToken })
   })
   // respond to history change events
   props.runtime.on('history', ({ type, path }) => {
@@ -26,58 +35,34 @@ function App (props) {
   })
 
   return (
-    <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
-      <Router>
-        <Provider theme={defaultTheme} colorScheme={'light'}>
-          <Grid
-            areas={['sidebar content']}
-            columns={['256px', '3fr']}
-            rows={['auto']}
-            height='100vh'
-            gap='size-100'
-          >
-            <View
-              gridArea='sidebar'
-              backgroundColor='gray-200'
-              padding='size-200'
-            >
-              <SideBar></SideBar>
-            </View>
-            <View gridArea='content' padding='size-200'>
-              <Switch>
-                <Route exact path='/'>
-                  <Home></Home>
-                </Route>
-                <Route path='/actions'>
-                  <ActionsForm runtime={props.runtime} ims={props.ims} />
-                </Route>
-                <Route path='/about'>
-                  <About></About>
-                </Route>
-              </Switch>
-            </View>
-          </Grid>
-        </Provider>
-      </Router>
-    </ErrorBoundary>
+      <ErrorBoundary onError={onError} FallbackComponent={fallbackComponent}>
+          <BrowserRouter>
+              <Provider theme={lightTheme} colorScheme={'light'}>
+                  <Routes>
+                      <Route index element={<MainPage runtime={props.runtime} ims={props.ims} />} />
+                      <Route path={'index.html'} element={<ExtensionRegistration />} />
+                      <Route path={'first-mass-action'} element={<FirstMassAction />} />
+                      <Route path={'another-mass-action'} element={<AnotherMassAction />} />
+                  </Routes>
+              </Provider>
+          </BrowserRouter>
+      </ErrorBoundary>
   )
 
   // Methods
 
   // error handler on UI rendering failure
-  function onError (e, componentStack) { }
+    function onError(e, componentStack) {}
 
-  // component to show if UI fails rendering
-  function fallbackComponent ({ componentStack, error }) {
-    return (
-      <React.Fragment>
-        <h1 style={{ textAlign: 'center', marginTop: '20px' }}>
-          Something went wrong :(
-        </h1>
-        <pre>{componentStack + '\n' + error.message}</pre>
-      </React.Fragment>
-    )
-  }
+    // component to show if UI fails rendering
+    function fallbackComponent({ componentStack, error }) {
+        return (
+            <React.Fragment>
+                <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Something went wrong :(</h1>
+                <pre>{componentStack + '\n' + error.message}</pre>
+            </React.Fragment>
+        )
+    }
 }
 
 export default App

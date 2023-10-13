@@ -1,10 +1,20 @@
-/* 
-* <license header>
-*/
-
+/*
+ * Copyright 2023 Adobe
+ * All Rights Reserved.
+ *
+ * NOTICE: All information contained herein is, and remains
+ * the property of Adobe and its suppliers, if any. The intellectual
+ * and technical concepts contained herein are proprietary to Adobe
+ * and its suppliers and are protected by all applicable intellectual
+ * property laws, including trade secret and copyright laws.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Adobe.
+ */
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
-import ReactDOM from 'react-dom'
+
+import { createRoot } from 'react-dom/client'
 
 import Runtime, { init } from '@adobe/exc-app'
 
@@ -24,19 +34,23 @@ try {
   bootstrapRaw()
 }
 
-function bootstrapRaw () {
-  /* **here you can mock the exc runtime and ims objects** */
-  const mockRuntime = { on: () => {} }
-  const mockIms = {}
+function renderApp(runtime, ims) {
+  const client = createRoot(document.getElementById('root'))
 
-  // render the actual react application and pass along the runtime object to make it available to the App
-  ReactDOM.render(
-    <App runtime={mockRuntime} ims={mockIms} />,
-    document.getElementById('root')
+  client.render(
+      <App runtime={runtime} ims={ims} />
   )
 }
 
-function bootstrapInExcShell () {
+function bootstrapRaw() {
+  /* **here you can mock the exc runtime and ims objects** */
+  const mockRuntime = {
+    on: () => {}
+  }
+  renderApp(mockRuntime, {})
+}
+
+function bootstrapInExcShell() {
   // get the Experience Cloud Runtime object
   const runtime = Runtime()
 
@@ -56,18 +70,14 @@ function bootstrapInExcShell () {
       org: imsOrg,
       token: imsToken
     }
-    // render the actual react application and pass along the runtime and ims objects to make it available to the App
-    ReactDOM.render(
-      <App runtime={runtime} ims={ims} />,
-      document.getElementById('root')
-    )
+    renderApp(runtime, ims)
   })
 
   // set solution info, shortTitle is used when window is too small to display full title
   runtime.solution = {
     icon: 'AdobeExperienceCloud',
-    title: 'dallas',
+    title: 'SampleExtension',
     shortTitle: 'JGR'
   }
-  runtime.title = 'dallas'
+  runtime.title = 'SampleExtension'
 }

@@ -1,72 +1,45 @@
-# Set-up tasks for Infosys November 2 2023 Dallas, TX
+# Adobe Commerce Technical Enablement Workshop
 
-Infosys to complete these tasks by Oct 11, 2023
+November 2, 2023 at Infosys Dallas Office
+A tailored enablement session with Adobe engineering to get equipped on modern technology approaches for Commerce.
 
-## Provision Adobe Commerce Cloud v2.4.6
+# Getting Started
 
-- [x] If not already provisioned, Commerce &amp; App Builder sandbox can be requested through SPP:
-https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.html
+You must initialize your development environment in order to perform lab work, such as extending the Commerce Admin UI using the SDK.
 
-## Provision Adobe App Builder
+We'll begin from a preset state of the (App Builder template)[https://developer.adobe.com/app-builder/docs/getting_started/first_app/]:
 
-- [x] Create an App Builder project https://developer.adobe.com/commerce/extensibility/events/project-setup/
-    - [App Builder Space](https://developer.adobe.com/console/projects/51911/4566206088345069907/)
-      - [Production](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079600/details)
-      - [Stage](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079601/details)
-    - For this workshop, we are using the **Stage** workspace because it does not require submission approval
+1. Open the project in VS Code or a Github Codespace.
+2. Launch from the included devcontainer configuration
+3. Open a terminal instance and run: `npm install`
+4. Authenticate with AIO: `aio login`
+5. Set your Org to `Infosys Technologies Partner Sandbox Americas`: `aio console org select`
+6. Set your Project to `dallas`: `aio console project select`
+7. Set your Workspace to `Stage`: `aio console workspace select`
+8. Import your workspace environment configuration (using Option A): `aio app use`
+9. Start your sample app: `aio app run`
 
-- [x] Install Adobe I/O Events for Adobe Commerce (Skip step 1 as you will be on 2.4.6): https://developer.adobe.com/commerce/extensibility/events/installation/
-- [x] Configure Adobe I/O Connection within App Builder https://developer.adobe.com/commerce/extensibility/events/configure-commerce/
+You should then see an app at `localhost:9080` which loads an order and product grid.
 
-## Install AdminUI SDK
-- [x] Install IMS Modules (required by Admin UI SDK): https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en
-- [x] Install Admin UI SDK: https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/installation/
-- [x] Configure IMS Modules
+## Setting up Admin UI SDK App
 
-## Install Catalog Service
-- [x] Configure Catalog Service: Installation and configuration docs https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/installation.html?lang=en
+While the main app that runs will provide the admin UI to view orders and product data remotely from the Commerce instance,
+we also need to configure a local web server to attach to our deployed Cloud instance. The environment itself is already
+configured to to that (see section below, _Adobe Commerce Configuration Reference_). You will now need to run your web server
+to deliver your app to the Commerce admin UI.
 
-## Webhook Framework
+From this project root directory, run: `node server.js`
 
-- [x] Install Webhooks module
-- [ ] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
+Then you can access the web server via: [https://localhost:9090/]
 
-
-## User pre-requisites
-
-Each participant of the hands-on labs will need these pre-requisites on their local machine to engage
-with the hands-on labs:
-
-- [x] NodeJS 14.17 LTS https://nodejs.org/en/blog/release/v14.17.0 
-- [x] Adobe IO CLI https://developer.adobe.com/runtime/docs/guides/tools/cli_install/
-- [x] API Mesh plugin https://experienceleague.adobe.com/docs/commerce-learn/tutorials/adobe-developer-app-builder/api-mesh/installing-aio-mesh-plugin.html?lang=en
-- [x] VS Code (or other IDE) https://code.visualstudio.com/
-- [x] API Client e.g. Postman https://www.postman.com/product/api-client/
-
-
-# Access Setup
-
-We also committed to setting up this level of access
-
-## App Builder
-
-* [ ] Adobe needs one user who has access to App Builder Org
-    * Administrative Access to run creation scripts
-    * Developer Access if something else
-
-
-## Adobe Commerce Admin Access
-
-Adobe may need troubleshooting access to Adobe Commerce, but they hope they don't need this.
-
-*  [ ] Provison access to an adobe resource (Adobe to confirm who this will be)
-
-
-# Installation Notes and Issues
-
-* [Step 4](https://developer.adobe.com/commerce/extensibility/events/project-setup/) asks to `Select the DX Experience Cloud SPA v1 option` but this isn't available. I selected `@adobe/generator-app-excshell` as it was the only one based on `dx/excshell/1` which seems like a requirement for the runtime demo
+See also:
+ - [./CHECKLIST.md]
+ - [./README-aio.md]
+ - [https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/configuration/]
 
 ## Adobe Commerce Configuration Reference
+
+For verifying environment setup for use in training and lab work:
 
 **Stores > Configuration > Adobe Services > Adobe I/O Events**
 
@@ -91,3 +64,10 @@ Commerce events
 - Data Space: `Production` (Data Space ID: `0ee5e13b-ee7f-40da-9997-b9dab721b02c`)
 - IMS Organization ID: (`118765E655DEE7427F000101@AdobeOrg`)
 
+**Stores > Configuration > Adobe Services > Admin UI SDK**
+
+- Enable Admin UI SDK: `Yes`
+- Enable local server: `Yes`
+- Base URL: `https://localhost:9090`
+- IMS Token: `dummyToken`
+- IMS Org Id: `imsOrg`
