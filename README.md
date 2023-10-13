@@ -10,9 +10,10 @@ https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.
 ## Provision Adobe App Builder
 
 - [x] Create an App Builder project https://developer.adobe.com/commerce/extensibility/events/project-setup/
-        * [App Builder Space](https://developer.adobe.com/console/projects/51911/4566206088345069907/)
-            * [Production](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079600/details)
-            * [Stage](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079601/details)
+    - [App Builder Space](https://developer.adobe.com/console/projects/51911/4566206088345069907/)
+      - [Production](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079600/details)
+      - [Stage](https://developer.adobe.com/console/projects/51911/4566206088345069907/workspaces/4566206088345079601/details)
+    - For this workshop, we are using the **Stage** workspace because it does not require submission approval
 
 - [x] Install Adobe I/O Events for Adobe Commerce (Skip step 1 as you will be on 2.4.6): https://developer.adobe.com/commerce/extensibility/events/installation/
 - [x] Configure Adobe I/O Connection within App Builder https://developer.adobe.com/commerce/extensibility/events/configure-commerce/
@@ -20,14 +21,15 @@ https://solutionpartners.adobe.com/solution-partners/home/learn/tools/sandboxes.
 ## Install AdminUI SDK
 - [x] Install IMS Modules (required by Admin UI SDK): https://experienceleague.adobe.com/docs/commerce-admin/start/admin/ims/adobe-ims-config.html?lang=en
 - [x] Install Admin UI SDK: https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/installation/
-- [ ] Configure IMS Modules (Rick is waiting to do this)
+- [x] Configure IMS Modules
 
 ## Install Catalog Service
 - [x] Configure Catalog Service: Installation and configuration docs https://experienceleague.adobe.com/docs/commerce-merchant-services/catalog-service/installation.html?lang=en
 
 ## Webhook Framework
 
-* Needs to be pushed [x] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
+- [x] Install Webhooks module
+- [ ] Configure Webhooks and complete associated steps https://developer.adobe.com/commerce/extensibility/webhooks/
 
 
 ## User pre-requisites
@@ -63,3 +65,29 @@ Adobe may need troubleshooting access to Adobe Commerce, but they hope they don'
 # Installation Notes and Issues
 
 * [Step 4](https://developer.adobe.com/commerce/extensibility/events/project-setup/) asks to `Select the DX Experience Cloud SPA v1 option` but this isn't available. I selected `@adobe/generator-app-excshell` as it was the only one based on `dx/excshell/1` which seems like a requirement for the runtime demo
+
+## Adobe Commerce Configuration Reference
+
+**Stores > Configuration > Adobe Services > Adobe I/O Events**
+
+General configuration
+- Adobe I/O Authorization Type: OAuth
+- Adobe I/O Workspace Configuration: (retrieve Stage workspace JSON from Adobe Developer Console)
+- Adobe Commerce Instance ID: `INFOSYS_TECHNOLOGIES_LTD_PARTNER_SANDBOX_MASTER_ENV`
+- Adobe I/O Event Provider ID: `d67866aa-7263-4672-9fa6-52cecfe4497a`
+    - Note: this provider was generated using `bin/magento events:create-event-provider` in `master` Cloud environment
+
+Commerce events
+- Merchant ID: `INFOSYS_TECHNOLOGIES_LTD_PARTNER`
+- Environment ID: `Production`
+
+**Stores > Configuration > Services > Commerce Services Connector**
+
+- Sandbox public API key: `a84464cdced04628baf5f5ede8627d60`
+- Sandbox private API key: (see <rick.buczynski@blueacornici.com>, key generated from Magento.com user account)
+- Production public API key: `586e2dc81f8f43988c0b32f54284ec0e`
+- Production private API key: (see <rick.buczynski@blueacornici.com>, key generated from Magento.com user account)
+- SaaS Identifier: `DallasEnablementTraining` (Project ID: `10c57265-b291-4f30-aa35-5a47c1eaccd1`)
+- Data Space: `Production` (Data Space ID: `0ee5e13b-ee7f-40da-9997-b9dab721b02c`)
+- IMS Organization ID: (`118765E655DEE7427F000101@AdobeOrg`)
+
