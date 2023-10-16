@@ -1,0 +1,7 @@
+version: '3.8'
+services: 
+  app:
+    image: mcr.microsoft.com/devcontainers/php:1-8.2-bullseye
+    network_mode: service:db
+    volumes:
+      - ../..:/workspaces:cached

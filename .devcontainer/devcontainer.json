@@ -1,15 +1,33 @@
 {
-	"name": "PHP",
 
-	"image": "mcr.microsoft.com/devcontainers/php:1-8.1-bullseye",
+	"name": "Dallas Enablement Training",
+	
+	"dockerComposeFile": [
+		"commerce.yaml", // commerce sandbox, comment this out to use cloud!
+		"app.yaml" // aio service sandbox, needed
+	],
 
-	"forwardPorts": [8080],
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"shutdownAction": "stopCompose",
 
-	"postCreateCommand": "make install",
+	"forwardPorts": [8443],
 
-	"containerEnv": {
-		"XDEBUG_MODE": "off"
-	},
+	// "postStartCommand": ".devcontainer/postStart.sh",
+
+	// "postCreateCommand": "make install",
+
+	// "containerEnv": {
+	// 	"XDEBUG_MODE": "off",
+	// 	"COMMERCE_EDITION": "magento/project-enterprise-edition",
+	// 	"DEPLOY_MODE": "production",
+
+	// 	"ADMINUISDK_VERSION": ">=1.0"
+	// },
+
+
+	"runArgs": ["--env-file","commerce.env"],
+
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"nodeGypDependencies": true,
@@ -17,6 +35,7 @@
 			"nvmVersion": "latest"
 		}
 	},
+
 	"customizations": {
 		"vscode": {
 			"extensions": [
