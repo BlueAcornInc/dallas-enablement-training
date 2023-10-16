@@ -45,7 +45,6 @@ then
         --page-cache-redis-db=1 \
         --page-cache-redis-port=6379
 
-    bin/magento module:disable Magento_TwoFactorAuth
     bin/magento sampledata:deploy
 
     ## Configure Application
@@ -59,6 +58,12 @@ then
     bin/magento config:set --lock-env catalog/search/enable_eav_indexer 1
     bin/magento config:set --lock-env dev/static/sign 0
 
+    bin/magento admin:adobe-ims:enable \
+                    --organization-id=$IMS_ORG_ID \
+                    --client-id=IMS_CLIENT_ID \
+                    --client-secret=$IMS_CLIENT_SECRET \
+                    --2fa=$IMS_2FA_ENABLED
+    
     bin/magento cache:enable block_html full_page
     bin/magento indexer:reindex
     
