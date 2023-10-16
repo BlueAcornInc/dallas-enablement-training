@@ -112,3 +112,8 @@ Commerce events
 - Base URL: `https://localhost:9090`
 - IMS Token: `dummyToken`
 - IMS Org Id: `imsOrg`
+
+**Cloud Configuration > Master > Environment Variables**
+
+- `env:APP_BUILDER_URL`: `https://51911-dallas-stage.adobeioruntime.net/api/v1/web`
+    - This variable is required to power the Cloud project sample webhook module, which must be able to locate the App Builder runtime function
