@@ -63,6 +63,9 @@ then
                     --client-id=IMS_CLIENT_ID \
                     --client-secret=$IMS_CLIENT_SECRET \
                     --2fa=$IMS_2FA_ENABLED
+
+    bin/magento module:disable Magento_AdminAdobeImsTwoFactorAuth
+    bin/magento module:disable Magento_TwoFactorAuth
     
     bin/magento cache:enable block_html full_page
     bin/magento indexer:reindex

@@ -9,7 +9,7 @@ services:
       - ../..:/workspaces:cached
       - commerce:/var/www/html
       - ../.devcontainer:/.devcontainer
-    env_file: commerce.env
+    env_file: commerce.localhost.env
     network_mode: service:db
   db:
     image: mysql:8.0-oracle

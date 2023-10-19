@@ -13,20 +13,17 @@
 
 	"forwardPorts": [8443],
 
-	// "postStartCommand": ".devcontainer/postStart.sh",
+	
 
 	// "postCreateCommand": "make install",
+	"postStartCommand": "npx aio app run",
 
-	// "containerEnv": {
-	// 	"XDEBUG_MODE": "off",
-	// 	"COMMERCE_EDITION": "magento/project-enterprise-edition",
-	// 	"DEPLOY_MODE": "production",
-
-	// 	"ADMINUISDK_VERSION": ">=1.0"
-	// },
-
-
-	"runArgs": ["--env-file","commerce.env"],
+	"containerEnv": {
+		"XDEBUG_MODE": "off",
+		"AIO_RUNTIME_NAMESPACE": "51911-dallas-stage",
+		"AIO_RUNTIME_AUTH": "0b6e99ac-37a4-4acc-b30d-ba9b99f23a0a:OW3lhx7Aw6U403eCxx6gGI4ACa0C41V71R3W1wPEs5k3mtNAxbA07Xqic655JS52",
+		"AIO_RUNTIME_APIHOST": "https://adobeioruntime.net"
+	},
 
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
