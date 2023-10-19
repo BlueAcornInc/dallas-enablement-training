@@ -21,11 +21,24 @@ We'll begin from a preset state of the (App Builder template)[https://developer.
 
 You should then see an app at `localhost:9080` which loads an order and product grid.
 
+Your local `.env` file may require additional configuration to allow the app to connect to the Commerce Cloud instance APIs:
+
+```
+COMMERCE_BASE_URL=https://master-7rqtwti-t3cui2xfd7pvq.ap-4.magentosite.cloud/
+COMMERCE_CONSUMER_KEY=<Key ending in 'g1u3'>
+COMMERCE_CONSUMER_SECRET=<Key ending in 'uhpq'>
+COMMERCE_ACCESS_TOKEN=<Key ending in 'gsb0'>
+COMMERCE_ACCESS_TOKEN_SECRET=<Key ending in 'bc2k'>
+```
+
+Refer to the Cloud instance back office configuration: **System > Extensions > Integrations > App Builder: Admin UI SDK Example > Integration Details**
+You may need to copy these values into your `.env` before running the app (step 9 above).
+
 ## Setting up Admin UI SDK App
 
 While the main app that runs will provide the admin UI to view orders and product data remotely from the Commerce instance,
 we also need to configure a local web server to attach to our deployed Cloud instance. The environment itself is already
-configured to to that (see section below, _Adobe Commerce Configuration Reference_). You will now need to run your web server
+configured to do that (see section below, _Adobe Commerce Configuration Reference_). You will now need to run your web server
 to deliver your app to the Commerce admin UI.
 
 From this project root directory, run: `node server.js`
@@ -36,6 +49,34 @@ See also:
  - [./CHECKLIST.md]
  - [./README-aio.md]
  - [https://developer.adobe.com/commerce/extensibility/admin-ui-sdk/configuration/]
+
+## Note on Webhooks Example
+
+This repository also contains an App Builder action for handling Commerce webhook events in `src/dx-excshell-1/ext.config.yaml`
+
+```
+...
+SampleWebhook:
+  actions:
+    commerce-sample-product-validation:
+      function: actions/commerce/sample-product-validation.js
+      web: 'yes'
+      runtime: 'nodejs:16'
+...
+```
+
+For testing its behavior, run:
+
+```
+$ aio runtime action invoke SampleWebhook/commerce-sample-product-validation --blocking --result --param product '{"sku":"24-WG084"}'
+{
+  "body": "{\"op\":\"exception\",\"message\":\"This product is not available for consumer purchase because it contains banned materials.\"}",
+  "statusCode": 200
+}
+```
+
+In this example, passing any other `sku` will produce a successful result. This demonstrates the ability of an external action to drive a webhook.
+
 
 ## Adobe Commerce Configuration Reference
 
@@ -71,3 +112,8 @@ Commerce events
 - Base URL: `https://localhost:9090`
 - IMS Token: `dummyToken`
 - IMS Org Id: `imsOrg`
+
+**Cloud Configuration > Master > Environment Variables**
+
+- `env:APP_BUILDER_URL`: `https://51911-dallas-stage.adobeioruntime.net/api/v1/web`
+    - This variable is required to power the Cloud project sample webhook module, which must be able to locate the App Builder runtime function
