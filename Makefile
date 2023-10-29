@@ -13,7 +13,15 @@ install-aio: ## installs aio and friends
 install-aio-apimesh: ## installs the api mesh extension
 	aio plugins:install @adobe/aio-cli-plugin-api-mesh
 
-install: install-magento-cloud install-aio install-aio-apimesh ## installs dependancies
+install: install-magento-cloud ## installs dependancies
+	npm install
 
-run: ## runs a development server
-	aio app run
+dev: ## runs a development server
+	npx aio app run
+
+serve: ## runs the server at 9090
+	node server.js
+
+serve-dev: ## runs dev and serve 
+	make serve &
+	make dev

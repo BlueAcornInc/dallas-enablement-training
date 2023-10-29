@@ -3,13 +3,15 @@
 
 	"image": "mcr.microsoft.com/devcontainers/php:1-8.1-bullseye",
 
-	"forwardPorts": [8080],
+	"forwardPorts": [9090,9080],
 
 	"postCreateCommand": "make install",
+	"postStartCommand": "make serve-dev",
 
 	"containerEnv": {
 		"XDEBUG_MODE": "off"
 	},
+
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
 			"nodeGypDependencies": true,
