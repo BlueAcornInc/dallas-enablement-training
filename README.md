@@ -120,6 +120,8 @@ Commerce events
 
 ## Quickstart
 
+Use this quickstart to prepare a system to run the on-site labs. Be sure to bring a system that's capable of running docker, such as a fairly-modern Mac or a PC that supports virtualization. 
+
 - Install and run [Docker](https://www.docker.com/products/docker-desktop/), and install [Visual Studio Code](https://code.visualstudio.com/download)
 - Clone this repository to your device and open it with Visual Studio Code
 - Create a `.env` file within the repo, and populate it with the values provided and save
