@@ -130,5 +130,5 @@ Use this quickstart to prepare a system to run the on-site labs. Be sure to brin
   - Eventually two process will start, the "Ports" section in Visual Studio Code will show both `9080` and `9090` active. The environment is now ready.
 - Visit each local dev server once in the browser in https ([React App Server](https://localhost:9080/) and [Wrapper Server](https://localhost:9090/)), using "Visit Site Anyways" to allow the browser to view these insecure urls
 - Login to the [Sandbox Admin Panel](https://master-7rqtwti-t3cui2xfd7pvq.ap-4.magentosite.cloud/admin) with your Adobe Account
-- In the Adobe Commerce Admin, select `Marketing` >> `My First App`. If the ports outlined above are active, this should be listed to the right of the Marketing menu
+- In the Adobe Commerce Admin, select `Marketing` >> `First App on App Builder`. If the ports outlined above are active, this should be listed to the right of the Marketing menu
 - Boom! You should see the react application served from https://localhost:9080/ in the Adobe Commerce Admin
