@@ -17,11 +17,12 @@ install: install-magento-cloud ## installs dependancies
 	npm install
 
 dev: ## runs a development server
+	npx aio telemetry on
 	npx aio app run
 
 serve: ## runs the server at 9090
 	node server.js
 
-serve-dev: ## runs dev and serve 
+serve-dev: ## runs dev and serve
 	make serve &
 	make dev
