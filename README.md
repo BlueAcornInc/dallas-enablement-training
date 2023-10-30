@@ -117,3 +117,16 @@ Commerce events
 
 - `env:APP_BUILDER_URL`: `https://51911-dallas-stage.adobeioruntime.net/api/v1/web`
     - This variable is required to power the Cloud project sample webhook module, which must be able to locate the App Builder runtime function
+
+## Quickstart
+
+- Install and run [Docker](https://www.docker.com/products/docker-desktop/), and install [Visual Studio Code](https://code.visualstudio.com/download)
+- Clone this repository to your device and open it with Visual Studio Code
+- Create a `.env` file within the repo, and populate it with the values provided and save
+- `Shift`+`Option`+`p` to open the Command Pallette and select `Reopen in Container`
+  - This will start a lengththy build process, this will take 5-10mins to build the environment and pull down packages with npm
+  - Eventually two process will start, the "Ports" section in Visual Studio Code will show both `9080` and `9090` active. The environment is now ready.
+- Visit each local dev server once in the browser in https ([React App Server](https://localhost:9080/) and [Wrapper Server](https://localhost:9090/)), using "Visit Site Anyways" to allow the browser to view these insecure urls
+- Login to the [Sandbox Admin Panel](https://master-7rqtwti-t3cui2xfd7pvq.ap-4.magentosite.cloud/admin) with your Adobe Account
+- In the Adobe Commerce Admin, select `Marketing` >> `My First App`. If the ports outlined above are active, this should be listed to the right of the Marketing menu
+- Boom! You should see the react application served from https://localhost:9080/ in the Adobe Commerce Admin
